@@ -32,7 +32,7 @@ import frc.robot.subsystems.DriveTrainSubsystem;
 public class Robot extends TimedRobot
 {
     // Declare hardware
-    public Talon talon01;
+    public VectorSPX;
     // Declare subsystems
     private final DriveTrainSubsystem driveTrainSubsystem;
     // Declare commands

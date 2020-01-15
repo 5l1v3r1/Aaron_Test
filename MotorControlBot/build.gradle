@@ -47,6 +47,13 @@ test {
         includeEngines 'junit-vintage'
     }
 }
+repositories {
+    maven {
+        url "http://devsite.ctr-electronics.com/maven/release/"
+    }
+}
+
+
         
 dependencies {
     def junit5Version = '5.5.2'
@@ -66,6 +73,8 @@ dependencies {
     testRuntimeOnly "org.junit.vintage:junit-vintage-engine:$junit5Version"
 
     implementation 'org.mockito:mockito-core:3.2.4'
+    //implementation 'com.ctre.phoenix:wpiapi-java:5.17.3'
+    compile 'com.ctre.pheonix:core:5.17.4'
 
     // Enable simulation gui support. Must check the box in vscode to enable support
     // upon debugging
