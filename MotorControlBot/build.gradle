@@ -41,6 +41,12 @@ deploy {
 // Set this to true to enable desktop support.
 def includeDesktopSupport = false
 
+repositories {
+    maven {
+        url "http://devsite.ctr-electronics.com/maven/release/"
+    }
+}
+
 
 test {
     useJUnitPlatform() {
@@ -64,6 +70,8 @@ dependencies {
     testRuntimeOnly "org.junit.jupiter:junit-jupiter-engine:$junit5Version"
     testCompileOnly 'junit:junit:4.12'
     testRuntimeOnly "org.junit.vintage:junit-vintage-engine:$junit5Version"
+
+    implementation "com.ctre.phoenix:wpiapi-java:5.17.4"
 
     implementation 'org.mockito:mockito-core:3.2.4'
 
