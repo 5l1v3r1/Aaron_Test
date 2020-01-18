@@ -20,7 +20,7 @@ public class DriveCommand extends Command {
     @Override
     protected void execute() {
         // Called repeatedly when this Command is scheduled to run
-        driveTrainSubsystem.setTalonsToMax();
+        driveTrainSubsystem.setVictorToMax();
     }
 
     @Override

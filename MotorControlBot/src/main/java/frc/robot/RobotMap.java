@@ -21,6 +21,13 @@ public class RobotMap
     final static int Port_3 = 3;
     final static int Port_4 = 4;
 
+    //IDS
+    final static int ID_0 = 0;
+    final static int ID_1 = 1;
+    final static int ID_2 = 2;
+    final static int ID_3 = 3;
+    final static int ID_4 = 4;
+
     // For example to map the left and right motors, you could define the
     // following variables to use with your drivetrain subsystem.
     // public static int leftMotor = 1;

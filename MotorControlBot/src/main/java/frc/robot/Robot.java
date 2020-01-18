@@ -7,6 +7,8 @@
 
 package frc.robot;
 
+import com.ctre.phoenix.motorcontrol.can.VictorSPX;
+import com.ctre.phoenix.motorcontrol.can.WPI_VictorSPX;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.Talon;
 import edu.wpi.first.wpilibj.TimedRobot;
@@ -32,7 +34,7 @@ import frc.robot.subsystems.DriveTrainSubsystem;
 public class Robot extends TimedRobot
 {
     // Declare hardware
-    public VectorSPX;
+    public VictorSPX victorSPX_01;
     // Declare subsystems
     private final DriveTrainSubsystem driveTrainSubsystem;
     // Declare commands
@@ -49,12 +51,12 @@ public class Robot extends TimedRobot
 
     public Robot() {
         super();
-        this.talon01 = new Talon(RobotMap.Port_0);
-        this.driveTrainSubsystem = new DriveTrainSubsystem(talon01);
+        this.victorSPX_01 = new VictorSPX(RobotMap.ID_4);
+        this.driveTrainSubsystem = new DriveTrainSubsystem(victorSPX_01);
         this.driveCommand = new DriveCommand(driveTrainSubsystem);
             //this.exampleCommandGroup = new ExampleCommandGroup();
-        this.joystick = new Joystick(RobotMap.Port_1);
-        this.button = new JoystickButton(joystick, RobotMap.Port_2);
+        this.joystick = new Joystick(RobotMap.Port_0);
+        this.button = new JoystickButton(joystick, RobotMap.ID_1);
     }
 
     /**

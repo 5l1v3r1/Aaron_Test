@@ -1,5 +1,7 @@
 package frc.robot.subsystems;
 
+import com.ctre.phoenix.motorcontrol.ControlMode;
+import com.ctre.phoenix.motorcontrol.can.VictorSPX;
 import edu.wpi.first.wpilibj.Talon;
 import edu.wpi.first.wpilibj.command.SchedulerTestHelper;
 import frc.robot.commands.DriveCommand;
@@ -47,14 +49,14 @@ public class DriveTrainSubsystemUnitTest {
      */
 
     @Test
-    protected void canSetTalonSpeedToMax() throws InterruptedException, ExecutionException {
+    protected void canSetVictorSpeedToMax() throws InterruptedException, ExecutionException {
         // Assemble
         System.out.println("Passed");
-        Talon talon01 = mock(Talon.class);
+        VictorSPX victorSPX_01 = mock(VictorSPX.class);
         System.out.println("Mock Talon Created");
         // Note that we do not mock the subsystem because we are going to test the result
         // on the subsystem by exercising behavior on the command
-        DriveTrainSubsystem classUnderTest = new DriveTrainSubsystem(talon01);
+        DriveTrainSubsystem classUnderTest = new DriveTrainSubsystem(victorSPX_01);
         System.out.println("DriveTrainSubsystem created");
 
         DriveCommand driveCommand = new DriveCommand(classUnderTest);
@@ -64,7 +66,7 @@ public class DriveTrainSubsystemUnitTest {
         schedulerTestHelper.run(driveCommand).forDuration(7);
 
         //Assert
-        verify(talon01, atLeastOnce()).setSpeed(1.0);
-        verifyNoMoreInteractions(talon01);
+        verify(victorSPX_01, atLeastOnce()).set(ControlMode.PercentOutput, 1);
+        verifyNoMoreInteractions(victorSPX_01);
     }
 }
