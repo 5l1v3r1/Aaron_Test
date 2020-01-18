@@ -4,7 +4,6 @@ import com.ctre.phoenix.motorcontrol.ControlMode;
 import com.ctre.phoenix.motorcontrol.can.VictorSPX;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Subsystem;
-import com.revrobotics.ColorSensorV3;
 
 public class DriveTrainSubsystem extends Subsystem {
     // Only make the hardware components 'final'

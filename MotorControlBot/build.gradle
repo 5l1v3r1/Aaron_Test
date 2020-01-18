@@ -44,6 +44,9 @@ def includeDesktopSupport = false
 repositories {
     maven {
         url "http://devsite.ctr-electronics.com/maven/release/"
+        }
+    maven {
+        url "http://www.revrobotics.com/content/sw/color-sensor-v3/sdk/maven/"
     }
 }
 
@@ -53,11 +56,7 @@ test {
         includeEngines 'junit-vintage'
     }
 }
-repositories {
-    maven {
-       url "http://devsite.ctr-electronics.com/maven/release/pheonix"
-    }
-}
+
 
 
         
@@ -79,10 +78,10 @@ dependencies {
     testRuntimeOnly "org.junit.vintage:junit-vintage-engine:$junit5Version"
 
     implementation "com.ctre.phoenix:wpiapi-java:5.17.4"
+    implementation "com.revrobotics.frc:ColorSensorV3-java:1.0.1"
 
     implementation 'org.mockito:mockito-core:3.2.4'
     implementation 'com.ctre.phoenix:api-java:5.17.6'
-    // compile 'com.ctre.pheonix:wpiapi-java:5.17.4'
 
     // Enable simulation gui support. Must check the box in vscode to enable support
     // upon debugging

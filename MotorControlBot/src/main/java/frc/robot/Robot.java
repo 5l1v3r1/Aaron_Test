@@ -9,6 +9,7 @@ package frc.robot;
 
 import com.ctre.phoenix.motorcontrol.can.VictorSPX;
 import com.ctre.phoenix.motorcontrol.can.WPI_VictorSPX;
+import com.revrobotics.ColorSensorV3;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.Talon;
 import edu.wpi.first.wpilibj.TimedRobot;
@@ -16,12 +17,15 @@ import edu.wpi.first.wpilibj.buttons.Button;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.CommandGroup;
+import edu.wpi.first.wpilibj.util.Color;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import frc.robot.commandGroups.ExampleCommandGroup;
 import frc.robot.commands.DriveCommand;
 import frc.robot.subsystems.DriveTrainSubsystem;
+import edu.wpi.first.wpilibj.I2C;
+import com.revrobotics.*;
 
 
 /**
@@ -34,7 +38,10 @@ import frc.robot.subsystems.DriveTrainSubsystem;
 public class Robot extends TimedRobot
 {
     // Declare hardware
-    public VictorSPX victorSPX_01;
+    public final VictorSPX victorSPX_01;
+
+    public final ColorSensorV3 colorSensorV3;
+
     // Declare subsystems
     private final DriveTrainSubsystem driveTrainSubsystem;
     // Declare commands
@@ -45,13 +52,15 @@ public class Robot extends TimedRobot
     private final Joystick joystick;
     private final Button button;
 
-    
+
     private Command autonomousCommand;
     private SendableChooser<Command> chooser = new SendableChooser<>();
 
     public Robot() {
         super();
         this.victorSPX_01 = new VictorSPX(RobotMap.ID_4);
+        this.colorSensorV3 = new ColorSensorV3(RobotMap.i2cPort);
+
         this.driveTrainSubsystem = new DriveTrainSubsystem(victorSPX_01);
         this.driveCommand = new DriveCommand(driveTrainSubsystem);
             //this.exampleCommandGroup = new ExampleCommandGroup();
@@ -92,7 +101,48 @@ public class Robot extends TimedRobot
     @Override
     public void robotPeriodic()
     {
-        
+        /**
+         * The method GetColor() returns a normalized color value from the sensor and can be
+         * useful if outputting the color to an RGB LED or similar. To
+         * read the raw color, use GetRawColor().
+         *
+         * The color sensor works best when within a few inches from an object in
+         * well lit conditions (the built in LED is a big help here!). The farther
+         * an object is the more light from the surroundings will bleed into the
+         * measurements and make it difficult to accurately determine its color.
+         */
+        Color detectedColor = colorSensorV3.getColor();
+
+        /**
+         * The sensor returns a raw IR value of the infrared light detected.
+         */
+        double IR = colorSensorV3.getIR();
+
+        /**
+         * Open Smart Dashboard or Shuffleboard to see the color detected by the
+         * sensor.
+         */
+        SmartDashboard.putNumber("Red", detectedColor.red);
+        SmartDashboard.putNumber("Green", detectedColor.green);
+        SmartDashboard.putNumber("Blue", detectedColor.blue);
+        SmartDashboard.putNumber("IR", IR);
+
+        /**
+         * In addition to RGB IR values, the color sensor can also return an
+         * infrared proximity value. The chip contains an IR led which will emit
+         * IR pulses and measure the intensity of the return. When an object is
+         * close the value of the proximity will be large (max 2047 with default
+         * settings) and will approach zero when the object is far away.
+         *
+         * Proximity can be used to roughly approximate the distance of an object
+         * or provide a threshold for when an object is close enough to provide
+         * accurate color values.
+         */
+        int proximity = colorSensorV3.getProximity();
+
+        SmartDashboard.putNumber("Proximity", proximity);
+
+
     }
     
     /**

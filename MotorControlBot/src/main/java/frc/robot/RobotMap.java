@@ -7,6 +7,8 @@
 
 package frc.robot;
 
+import edu.wpi.first.wpilibj.I2C;
+
 /**
  * The RobotMap is a mapping from the ports sensors and actuators are wired into
  * to a variable name. This provides flexibility changing wiring, makes checking
@@ -15,6 +17,7 @@ package frc.robot;
  */
 public class RobotMap
 {
+    //PORTS
     final static int Port_0 = 0;
     final static int Port_1 = 1;
     final static int Port_2 = 2;
@@ -27,6 +30,10 @@ public class RobotMap
     final static int ID_2 = 2;
     final static int ID_3 = 3;
     final static int ID_4 = 4;
+
+    // I2C Ports
+    final static I2C.Port i2cPort = I2C.Port.kOnboard;
+
 
     // For example to map the left and right motors, you could define the
     // following variables to use with your drivetrain subsystem.
