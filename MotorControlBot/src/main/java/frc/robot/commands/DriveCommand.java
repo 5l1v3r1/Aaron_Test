@@ -1,14 +1,18 @@
 package frc.robot.commands;
 
+import edu.wpi.first.wpilibj.Joystick;
+import edu.wpi.first.wpilibj.buttons.JoystickButton;
 import edu.wpi.first.wpilibj.command.Command;
 import frc.robot.subsystems.DriveTrainSubsystem;
 
 public class DriveCommand extends Command {
     private final DriveTrainSubsystem driveTrainSubsystem;
+    private final JoystickButton button;
 
-    public DriveCommand(DriveTrainSubsystem driveTrainSubsystem) {
+    public DriveCommand(DriveTrainSubsystem driveTrainSubsystem, JoystickButton button) {
         requires(driveTrainSubsystem);
         this.driveTrainSubsystem = driveTrainSubsystem;
+        this.button = button;
     }
 
     @Override
@@ -25,8 +29,15 @@ public class DriveCommand extends Command {
 
     @Override
     protected boolean isFinished() {
-        // TODO write condition for stopping command
-            return false;
+        // This does the same thing as the one line below
+
+//        if (this.button.get()){
+//            return false;
+//        }
+//        else{
+//            return true;
+//        }
+        return !this.button.get();
     }
 
     @Override

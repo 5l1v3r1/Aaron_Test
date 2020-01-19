@@ -50,7 +50,7 @@ public class Robot extends TimedRobot
         // private final CommandGroup exampleCommandGroup;
     // Declare Operator Interface (Joysticks, controllers)
     private final Joystick joystick;
-    private final Button button;
+    private final JoystickButton button;
 
 
     private Command autonomousCommand;
@@ -61,11 +61,12 @@ public class Robot extends TimedRobot
         this.victorSPX_01 = new VictorSPX(RobotMap.ID_4);
         this.colorSensorV3 = new ColorSensorV3(RobotMap.i2cPort);
 
-        this.driveTrainSubsystem = new DriveTrainSubsystem(victorSPX_01);
-        this.driveCommand = new DriveCommand(driveTrainSubsystem);
-            //this.exampleCommandGroup = new ExampleCommandGroup();
         this.joystick = new Joystick(RobotMap.Port_0);
         this.button = new JoystickButton(joystick, RobotMap.ID_1);
+
+        this.driveTrainSubsystem = new DriveTrainSubsystem(victorSPX_01);
+        this.driveCommand = new DriveCommand(driveTrainSubsystem, button);
+            //this.exampleCommandGroup = new ExampleCommandGroup();
     }
 
     /**
