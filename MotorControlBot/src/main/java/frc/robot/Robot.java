@@ -8,24 +8,17 @@
 package frc.robot;
 
 import com.ctre.phoenix.motorcontrol.can.VictorSPX;
-import com.ctre.phoenix.motorcontrol.can.WPI_VictorSPX;
 import com.revrobotics.ColorSensorV3;
 import edu.wpi.first.wpilibj.Joystick;
-import edu.wpi.first.wpilibj.Talon;
 import edu.wpi.first.wpilibj.TimedRobot;
-import edu.wpi.first.wpilibj.buttons.Button;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
 import edu.wpi.first.wpilibj.command.Command;
-import edu.wpi.first.wpilibj.command.CommandGroup;
-import edu.wpi.first.wpilibj.util.Color;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
-import frc.robot.commandGroups.ExampleCommandGroup;
+import edu.wpi.first.wpilibj.util.Color;
 import frc.robot.commands.DriveCommand;
 import frc.robot.subsystems.DriveTrainSubsystem;
-import edu.wpi.first.wpilibj.I2C;
-import com.revrobotics.*;
 
 
 /**
@@ -65,7 +58,7 @@ public class Robot extends TimedRobot
         this.button = new JoystickButton(joystick, RobotMap.ID_1);
 
         this.driveTrainSubsystem = new DriveTrainSubsystem(victorSPX_01);
-        this.driveCommand = new DriveCommand(driveTrainSubsystem, button);
+        this.driveCommand = new DriveCommand(driveTrainSubsystem);
             //this.exampleCommandGroup = new ExampleCommandGroup();
     }
 

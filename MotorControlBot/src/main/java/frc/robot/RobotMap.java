@@ -18,21 +18,21 @@ import edu.wpi.first.wpilibj.I2C;
 public class RobotMap
 {
     //PORTS
-    final static int Port_0 = 0;
-    final static int Port_1 = 1;
-    final static int Port_2 = 2;
-    final static int Port_3 = 3;
-    final static int Port_4 = 4;
+    public final static int Port_0 = 0;
+    public final static int Port_1 = 1;
+    public final static int Port_2 = 2;
+    public final static int Port_3 = 3;
+    public final static int Port_4 = 4;
 
     //IDS
-    final static int ID_0 = 0;
-    final static int ID_1 = 1;
-    final static int ID_2 = 2;
-    final static int ID_3 = 3;
-    final static int ID_4 = 4;
+    public final static int ID_0 = 0;
+    public final static int ID_1 = 1;
+    public final static int ID_2 = 2;
+    public final static int ID_3 = 3;
+    public final static int ID_4 = 4;
 
     // I2C Ports
-    final static I2C.Port i2cPort = I2C.Port.kOnboard;
+    public final static I2C.Port i2cPort = I2C.Port.kOnboard;
 
 
     // For example to map the left and right motors, you could define the

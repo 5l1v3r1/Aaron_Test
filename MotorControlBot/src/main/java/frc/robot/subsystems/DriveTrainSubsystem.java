@@ -11,19 +11,10 @@ public class DriveTrainSubsystem extends Subsystem {
 
     // All other variables should not be final because they may
     // not have been initialized.
-    private Command command;
-
-    public DriveTrainSubsystem(VictorSPX victorSPX, Command command) {
-        if (victorSPX == null) {
-            throw new IllegalArgumentException("Please use a Victor SPX motor controller");
-        }
-        this.victorSPX_01 = victorSPX;
-        this.command = command;
-    }
 
     public DriveTrainSubsystem(VictorSPX victorSPX) {
         if (victorSPX == null) {
-            throw new IllegalArgumentException("Please use a talon motor controller");
+            throw new IllegalArgumentException("Please use a Victor SPX motor controller");
         }
         this.victorSPX_01 = victorSPX;
     }
@@ -37,11 +28,12 @@ public class DriveTrainSubsystem extends Subsystem {
         this.victorSPX_01.set(ControlMode.PercentOutput, 1);
     }
 
+    public void setVictorToZero() {
+        this.victorSPX_01.set(ControlMode.PercentOutput, 0);
+    }
+
     @Override
-    public void initDefaultCommand() {
-        // TODO set the default Command
-        // setDefaultCommand(new Command());
-        setDefaultCommand(this.command);
+    protected void initDefaultCommand() {
     }
 }
 
