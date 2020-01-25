@@ -2,7 +2,6 @@ package frc.robot.commands;
 
 import com.ctre.phoenix.motorcontrol.ControlMode;
 import com.ctre.phoenix.motorcontrol.can.VictorSPX;
-import edu.wpi.first.hal.HAL;
 import edu.wpi.first.wpilibj.command.SchedulerTestHelper;
 import frc.robot.subsystems.DriveTrainSubsystem;
 import org.junit.After;
@@ -11,7 +10,6 @@ import org.junit.Test;
 import org.mockito.Mockito;
 
 import java.util.concurrent.ExecutionException;
-import edu.wpi.first.wpilibj.HLUs
 import static org.mockito.Mockito.atLeast;
 import static org.mockito.Mockito.mock;
 
